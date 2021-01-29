@@ -6,12 +6,25 @@ const { verifyJWT } = require("../../utils/autorization");
 var log4js = require("log4js");
 var logger = log4js.getLogger();
 
+const yup = require("yup");
+
 logger.level = "debug";
 
 //get specific porduto
 router.get("/produto", async (req, resp) => {
-  const nome = req.query.nome;
-  logger.debug("produto", nome);
+  //validation
+  const { nome } = req.query;
+
+  const data = {
+    nome,
+  };
+
+  const schema = yup.object().shape({
+    nome: yup.string().required("Falta o nome"),
+  });
+
+  await schema.validate(data, { abortEarly: false });
+  //end of validation
 
   const client = await postgresClient.connect();
   try {
@@ -43,6 +56,24 @@ router.get("/produto/all", async (req, resp) => {
   }
 });
 router.post("/produto", async (req, resp) => {
+  //validation
+  const { nome, descri, valor } = req.body;
+
+  const data = {
+    nome,
+    descri,
+    valor,
+  };
+
+  const schema = yup.object().shape({
+    nome: yup.string().required("Falta o nome"),
+    descri: yup.string().required("Falta o descri"),
+    valor: yup.string().required("Falta o valor"),
+  });
+
+  await schema.validate(data, { abortEarly: false });
+  //end of validation
+
   const client = await postgresClient.connect();
   const values = [req.body.nome, req.body.descri, req.body.valor];
   try {
@@ -60,6 +91,22 @@ router.post("/produto", async (req, resp) => {
 });
 
 router.put("/produto/descri", async (req, resp) => {
+  //validation
+  const { nome, descri } = req.body;
+
+  const data = {
+    nome,
+    descri,
+  };
+
+  const schema = yup.object().shape({
+    nome: yup.string().required("Falta o nome"),
+    descri: yup.string().required("Falta o descri"),
+  });
+
+  await schema.validate(data, { abortEarly: false });
+  //end of validation
+
   const client = await postgresClient.connect();
   const values = [req.body.nome, req.body.descri];
   try {
@@ -76,6 +123,22 @@ router.put("/produto/descri", async (req, resp) => {
   }
 });
 router.put("/produto/valor", async (req, resp) => {
+  //validation
+  const { nome, valor } = req.body;
+
+  const data = {
+    nome,
+    valor,
+  };
+
+  const schema = yup.object().shape({
+    nome: yup.string().required("Falta o nome"),
+    valor: yup.string().required("Falta o valor"),
+  });
+
+  await schema.validate(data, { abortEarly: false });
+  //end of validation
+
   const client = await postgresClient.connect();
   const values = [req.body.nome, req.body.valor];
   try {
@@ -92,6 +155,20 @@ router.put("/produto/valor", async (req, resp) => {
   }
 });
 router.delete("/produto", async (req, resp) => {
+  //validation
+  const { nome } = req.body;
+
+  const data = {
+    nome,
+  };
+
+  const schema = yup.object().shape({
+    nome: yup.string().required("Falta o nome"),
+  });
+
+  await schema.validate(data, { abortEarly: false });
+  //end of validation
+
   const client = await postgresClient.connect();
   const values = [req.body.nome];
   try {

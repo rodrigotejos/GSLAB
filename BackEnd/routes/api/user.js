@@ -8,6 +8,22 @@ var logger = log4js.getLogger();
 logger.level = "debug";
 
 router.post("/user", async (req, resp) => {
+  //validation
+  const { email, password } = req.body;
+
+  const data = {
+    email,
+    password,
+  };
+
+  const schema = yup.object().shape({
+    email: yup.string().required("Falta o email"),
+    password: yup.string().required("Falta o password"),
+  });
+
+  await schema.validate(data, { abortEarly: false });
+  //end of validation
+
   const hash = crypto.createHmac("sha256", req.body.password).digest("hex");
   const client = await postgresClient.connect();
   //first verify if email exist
