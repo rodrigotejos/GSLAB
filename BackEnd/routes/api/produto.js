@@ -90,49 +90,21 @@ router.post("/produto", async (req, resp) => {
   }
 });
 
-router.put("/produto/descri", async (req, resp) => {
+router.put("/produto", async (req, resp) => {
   //validation
-  const { id_produto, descri } = req.body;
+  const { id_produto, nome, descri, valor } = req.body;
 
   const data = {
     id_produto,
+    nome,
     descri,
-  };
-
-  const schema = yup.object().shape({
-    id_produto: yup.string().required("Falta o id_produto"),
-    descri: yup.string().required("Falta o descri"),
-  });
-
-  await schema.validate(data, { abortEarly: false });
-  //end of validation
-
-  const client = await postgresClient.connect();
-  const values = [req.body.id_produto, req.body.descri];
-  try {
-    const response = await client.query(
-      `update db_produto SET descri = $2 where id_produto = $1`,
-      values
-    );
-    return resp.send(true);
-  } catch (err) {
-    logger.error(err.stack);
-    return resp.send(false);
-  } finally {
-    client.release();
-  }
-});
-router.put("/produto/valor", async (req, resp) => {
-  //validation
-  const { id_produto, valor } = req.body;
-
-  const data = {
-    id_produto,
     valor,
   };
 
   const schema = yup.object().shape({
     id_produto: yup.string().required("Falta o id_produto"),
+    nome: yup.string().required("Falta o nome"),
+    descri: yup.string().required("Falta o descri"),
     valor: yup.string().required("Falta o valor"),
   });
 
@@ -140,42 +112,15 @@ router.put("/produto/valor", async (req, resp) => {
   //end of validation
 
   const client = await postgresClient.connect();
-  const values = [req.body.id_produto, req.body.valor];
+  const values = [
+    req.body.id_produto,
+    req.body.nome,
+    req.body.descri,
+    req.body.valor,
+  ];
   try {
     const response = await client.query(
-      `update db_produto SET valor = $2 where id_produto = $1`,
-      values
-    );
-    return resp.send(true);
-  } catch (err) {
-    logger.error(err.stack);
-    return resp.send(false);
-  } finally {
-    client.release();
-  }
-});
-router.put("/produto/nome", async (req, resp) => {
-  //validation
-  const { id_produto, nome } = req.body;
-
-  const data = {
-    id_produto,
-    nome,
-  };
-
-  const schema = yup.object().shape({
-    id_produto: yup.string().required("Falta o id_produto"),
-    nome: yup.string().required("Falta o nome"),
-  });
-
-  await schema.validate(data, { abortEarly: false });
-  //end of validation
-
-  const client = await postgresClient.connect();
-  const values = [req.body.id_produto, req.body.nome];
-  try {
-    const response = await client.query(
-      `update db_produto SET nome = $2 where id_produto = $1`,
+      `update db_produto SET nome = $2, descri = $3, valor= $4 where id_produto = $1`,
       values
     );
     return resp.send(true);
