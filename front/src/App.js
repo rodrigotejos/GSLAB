@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 //import of components
 import MainPage from "./containers/MainPage/MainPage";
 import Login from "./containers/LoginPage/LoginPage";
+import EditPage from "./containers/EditPage/EditPage";
+import AdicionarPage from "./containers/AdicionarPage/AdicionarPage";
 
 //import css
 import "./index.scss";
@@ -19,6 +21,12 @@ const App = () => {
         </Route>
         <Route exact path="/">
           <MainPage />
+        </Route>
+        <Route exact path="/edit">
+          <EditPage />
+        </Route>
+        <Route exact path="/adicionar">
+          <AdicionarPage />
         </Route>
       </Switch>
     </Router>

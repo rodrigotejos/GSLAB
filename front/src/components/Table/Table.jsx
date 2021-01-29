@@ -118,6 +118,16 @@ const Table = ({ result }) => {
                     <th scope="col" class="relative px-6 py-3">
                       <span class="sr-only">Edit</span>
                     </th>
+                    <th scope="col" class="relative px-6 py-3">
+                      <button
+                        type="submit"
+                        className=" w-24flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        onClick={() => history.push("/adicionar")}
+                      >
+                        <span className="absolute left-0 inset-y-0 flex items-center pl-3"></span>
+                        + Adicionar
+                      </button>
+                    </th>
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
@@ -139,9 +149,14 @@ const Table = ({ result }) => {
                             <button
                               type="submit"
                               className=" w-24 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                              onClick={() => history.push("/edit")}
+                              onClick={() =>
+                                history.push({
+                                  pathname: "/edit",
+                                  values: item,
+                                })
+                              }
                             >
-                              Editar{" "}
+                              Editar
                             </button>
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
