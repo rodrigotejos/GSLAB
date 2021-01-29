@@ -5,20 +5,24 @@ const crypto = require("crypto");
 var log4js = require("log4js");
 var logger = log4js.getLogger();
 
+const yup = require("yup");
+
 logger.level = "debug";
 
 router.post("/user", async (req, resp) => {
   //validation
-  const { email, password } = req.body;
+  const { email, password, name } = req.body;
 
   const data = {
     email,
     password,
+    name,
   };
 
   const schema = yup.object().shape({
     email: yup.string().required("Falta o email"),
     password: yup.string().required("Falta o password"),
+    name: yup.string().required("Falto o name"),
   });
 
   await schema.validate(data, { abortEarly: false });
