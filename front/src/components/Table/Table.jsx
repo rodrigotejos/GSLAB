@@ -56,7 +56,7 @@ const Table = ({ result }) => {
                     </h3>
                     <div class="mt-2">
                       <p class="text-sm text-gray-500">
-                        Voçe tem certeza que dejesa remover o item ?
+                        Você tem certeza que dejesa remover o item ?
                       </p>
                     </div>
                   </div>

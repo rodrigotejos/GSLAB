@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import Table from "../../components/Table/Table";
 import axios from "axios";
 
-const MainPage = ({ selectId }) => {
+const MainPage = () => {
   const [data, setData] = useState();
   useEffect(() => {
     (async () => {

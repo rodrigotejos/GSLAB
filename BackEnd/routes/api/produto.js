@@ -11,7 +11,7 @@ const yup = require("yup");
 logger.level = "debug";
 
 //get specific porduto
-router.get("/produto", async (req, resp) => {
+router.get("/produto", verifyJWT, async (req, resp) => {
   //validation
   const { nome } = req.query;
 
@@ -40,7 +40,7 @@ router.get("/produto", async (req, resp) => {
     client.release();
   }
 });
-router.get("/produto/all", async (req, resp) => {
+router.get("/produto/all", verifyJWT, async (req, resp) => {
   const client = await postgresClient.connect();
   try {
     const response = await client.query(
@@ -55,7 +55,7 @@ router.get("/produto/all", async (req, resp) => {
     client.release();
   }
 });
-router.post("/produto", async (req, resp) => {
+router.post("/produto", verifyJWT, async (req, resp) => {
   //validation
   const { nome, descri, valor } = req.body;
 
@@ -90,7 +90,7 @@ router.post("/produto", async (req, resp) => {
   }
 });
 
-router.put("/produto", async (req, resp) => {
+router.put("/produto", verifyJWT, async (req, resp) => {
   //validation
   const { id_produto, nome, descri, valor } = req.body;
 
@@ -131,7 +131,7 @@ router.put("/produto", async (req, resp) => {
     client.release();
   }
 });
-router.delete("/produto", async (req, resp) => {
+router.delete("/produto", verifyJWT, async (req, resp) => {
   logger.info("to delete::::::", req.body);
   //validation
   const { id_produto } = req.body;

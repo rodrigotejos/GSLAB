@@ -1,7 +1,14 @@
 import "./App.scss";
 //react imports
-import React, { useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from "react-router-dom";
+import Cookie from "js-cookie";
 
 //import of components
 import MainPage from "./containers/MainPage/MainPage";
@@ -13,13 +20,36 @@ import AdicionarPage from "./containers/AdicionarPage/AdicionarPage";
 import "./index.scss";
 
 const App = () => {
+  const jwt = Cookie.get("token");
+  const PrivateRoute = ({ component: Component, ...rest }) => (
+    <Route
+      {...rest}
+      render={(props) =>
+        jwt ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{ pathname: "/login", state: { from: props.location } }}
+          />
+        )
+      }
+    />
+  );
+
   return (
     <Router>
       <Switch>
         <Route exact path="/login">
           <Login />
         </Route>
-        <Route exact path="/">
+        <PrivateRoute exact path="/" component={() => <MainPage />} />
+        <PrivateRoute exact path="/edit" component={() => <EditPage />} />
+        <PrivateRoute
+          exact
+          path="/adicionar"
+          component={() => <AdicionarPage />}
+        />
+        {/*<Route exact path="/">
           <MainPage />
         </Route>
         <Route exact path="/edit">
@@ -27,7 +57,7 @@ const App = () => {
         </Route>
         <Route exact path="/adicionar">
           <AdicionarPage />
-        </Route>
+  </Route>*/}
       </Switch>
     </Router>
   );

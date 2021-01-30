@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
 import { Alert } from "react-bootstrap";
@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 const Login = () => {
   const [isShowingAlert, setIsShowingAlert] = useState(false);
   const history = useHistory();
+
   return (
     <Fragment>
       {isShowingAlert ? (
@@ -51,7 +52,10 @@ const Login = () => {
                 console.log("login tela", response);
                 Cookie.set("token", response.data.token);
                 Cookie.set("nome", response.data.name);
-                history.push("/");
+                setTimeout(() => {
+                  console.log("Hello, World!");
+                  history.push("/");
+                }, 1000);
               } catch (error) {
                 setIsShowingAlert(true);
               }
