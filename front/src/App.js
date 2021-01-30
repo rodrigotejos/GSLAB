@@ -15,6 +15,7 @@ import MainPage from "./containers/MainPage/MainPage";
 import Login from "./containers/LoginPage/LoginPage";
 import EditPage from "./containers/EditPage/EditPage";
 import AdicionarPage from "./containers/AdicionarPage/AdicionarPage";
+import CreateUserPage from "./containers/CreateUserPage/CreateUserPage";
 
 //import css
 import "./index.scss";
@@ -48,6 +49,11 @@ const App = () => {
           exact
           path="/adicionar"
           component={() => <AdicionarPage />}
+        />
+        <PrivateRoute
+          exact
+          path="/create"
+          component={() => <CreateUserPage />}
         />
         {/*<Route exact path="/">
           <MainPage />

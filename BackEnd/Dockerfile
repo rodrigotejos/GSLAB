@@ -1,14 +1,13 @@
-FROM node:10-slim
+FROM node:12-slim
 
 # set deployment directory
-WORKDIR /back-end
+WORKDIR /BackEnd
 
 COPY . ./
 
-RUN npm install && \
-    npm run build
+RUN npm install
 
 EXPOSE 8080
 
 # run the container
-CMD ["node", "start"]
+CMD ["npm", "start"]

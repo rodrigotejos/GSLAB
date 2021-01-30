@@ -1,29 +1,59 @@
-# README #
+# GS Labs -Vaga Java
 
-This README would normally document whatever steps are necessary to get your application up and running.
+### What is this repository for?
 
-### What is this repository for? ###
+- repositorio contem o codigo para a vaga de desenvolverdor na GSlabs
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+### guia de start
 
-### How do I get set up? ###
+Para iniciar o programa basta rodar:
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+```bash
+docker-compose up
+```
 
-### Contribution guidelines ###
+Para parar:
 
-* Writing tests
-* Code review
-* Other guidelines
+```bash
+docker-compose down
+```
 
-### Who do I talk to? ###
+Apos o docker compose finalizar
 
-* Repo owner or admin
-* Other community or team contact
+Acesasr o link: https://localhost:3000
+
+### Banco de dados
+
+Usando seu gerenciador de banco de dados favorito rodar as query a seguir:
+
+Criar a table de usuarios:
+
+```bash
+create table db_usuario (
+    id_usuario serial PRIMARY KEY,
+	name VARCHAR ( 255 )  NOT NULL,
+	password_hash VARCHAR ( 255 ) NOT NULL,
+	email VARCHAR ( 255 ) NOT NULL
+);
+```
+
+Criar a tabela de produto:
+
+```bash
+create table db_produto (
+    id_produto serial PRIMARY KEY,
+	nome VARCHAR ( 255 )  NOT NULL,
+	descri VARCHAR NOT NULL,
+	valor VARCHAR ( 255 ) NOT NULL
+);
+```
+
+### Funcionamento
+
+O software permite que o usuario faça login, adicione produto, remova, lista e alterar
+
+todas as api de backend so pode ser acessadas com um token valido que é gerado no login de usuarios cadastrados
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
