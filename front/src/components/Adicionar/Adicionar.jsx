@@ -1,8 +1,10 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const Adicionar = (props) => {
+  const history = useHistory();
   return (
     <Fragment>
       <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -111,6 +113,16 @@ const Adicionar = (props) => {
                     >
                       <span className="absolute left-0 inset-y-0 flex items-center pl-3"></span>
                       Adicionar
+                    </button>
+                    <button
+                      type="submit"
+                      className=" w-1/2 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      onClick={() => {
+                        history.push("/");
+                      }}
+                    >
+                      <span className="absolute left-0 inset-y-0 flex items-center pl-3"></span>
+                      Voltar
                     </button>
                   </div>
                 </Form>

@@ -2,10 +2,12 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Edit = (props) => {
   const location = useLocation();
   const [valuesEdit, setValuesEdit] = useState();
+  const history = useHistory();
 
   useEffect(() => {
     const valuesEdit = location.values;
@@ -48,6 +50,7 @@ const Edit = (props) => {
                   const response = await axios.put("api/produto", values, {
                     headers: { "Content-Type": "application/json" },
                   });
+                  history.push("/");
 
                   // history.push("/");
                 } catch (error) {
@@ -124,6 +127,16 @@ const Edit = (props) => {
                       >
                         <span className="absolute left-0 inset-y-0 flex items-center pl-3"></span>
                         Alterar
+                      </button>
+                      <button
+                        type="submit"
+                        className=" w-1/2 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        onClick={() => {
+                          history.push("/");
+                        }}
+                      >
+                        <span className="absolute left-0 inset-y-0 flex items-center pl-3"></span>
+                        Cancelar
                       </button>
                     </div>
                   </Form>
