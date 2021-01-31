@@ -1,18 +1,10 @@
 # Gerenciador de produtos
 
-<<<<<<< HEAD
 Exemplo de gerenciador de produtos simples com autenticação em node.js
 
 ### guia de inicio
 
 - Para rodar o porgrama deve-se ter instalado na maquina o [docker e docker compose](https://docs.docker.com/get-docker/)
-=======
-exemplo de gerenciador de produtos simples com autenticação em node.js
-
-### guia de inicio
-
-- Para rodar deve ter instalado o docker e docker compose
->>>>>>> 780ef928b4ce6639910ff7b1840252a9fe3ee43b
 
 - Para iniciar o programa basta rodar:
 
@@ -28,11 +20,7 @@ docker-compose down
 
 Apos o docker compose finalizar:
 
-<<<<<<< HEAD
 - Acessar o link: http://localhost:3000
-=======
-Acessar o link: http://localhost:3000
->>>>>>> 780ef928b4ce6639910ff7b1840252a9fe3ee43b
 
 ### Banco de dados
 
@@ -42,6 +30,7 @@ exemplo:
 [Beekeeper Studio](https://www.beekeeperstudio.io/)
 
 Credencias:
+
 - user: "postgres"
 - database: "postgres"
 - password: "postgres"
