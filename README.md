@@ -2,8 +2,6 @@
 
 exemplo de gerenciador de produtos simples com autenticação em node.js
 
-
-
 ### guia de inicio
 
 - Para rodar deve ter instalado o docker e docker compose
@@ -22,11 +20,20 @@ docker-compose down
 
 Apos o docker compose finalizar
 
-Acesasr o link: https://localhost:3000
+Acessar o link: http://localhost:3000
 
 ### Banco de dados
 
 Usando seu gerenciador de banco de dados favorito rodar as query a seguir:
+exemplo:
+[DBeaver Community](https://dbeaver.io/)
+[Beekeeper Studio](https://www.beekeeperstudio.io/)
+
+Credencias:
+- user: "postgres"
+- database: "postgres"
+- password: "postgres"
+- host: "172.25.0.101"
 
 Criar a table de usuarios:
 
