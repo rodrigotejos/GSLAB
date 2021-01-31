@@ -55,7 +55,7 @@ const Login = () => {
                 setTimeout(() => {
                   console.log("Hello, World!");
                   history.push("/");
-                }, 2000);
+                }, 1000);
               } catch (error) {
                 setIsShowingAlert(true);
               }
