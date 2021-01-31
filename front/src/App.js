@@ -43,17 +43,15 @@ const App = () => {
         <Route exact path="/login">
           <Login />
         </Route>
+        <Route exact path="/create">
+          <CreateUserPage />
+        </Route>
         <PrivateRoute exact path="/" component={() => <MainPage />} />
         <PrivateRoute exact path="/edit" component={() => <EditPage />} />
         <PrivateRoute
           exact
           path="/adicionar"
           component={() => <AdicionarPage />}
-        />
-        <PrivateRoute
-          exact
-          path="/create"
-          component={() => <CreateUserPage />}
         />
         {/*<Route exact path="/">
           <MainPage />
