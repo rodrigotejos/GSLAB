@@ -1,0 +1,44 @@
+version: "3"
+services:
+  db-server:
+    image: "postgres"
+    container_name: db-server
+    networks:
+      mynet:
+        ipv4_address: 172.25.0.101
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  back-end-server:
+    build: ./BackEnd
+    container_name: back-end-server
+    networks:
+      mynet:
+        ipv4_address: 172.25.0.102
+    ports:
+      - 8080:8080
+
+  front-end-server:
+    build: ./front
+    container_name: front-end-server
+    networks:
+      mynet:
+        ipv4_address: 172.25.0.103
+    ports:
+      - 3000:3000
+
+volumes:
+  pg-data:
+
+networks:
+  mynet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/24
