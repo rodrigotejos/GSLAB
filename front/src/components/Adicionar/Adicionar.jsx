@@ -1,9 +1,9 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
-const Adicionar = (props) => {
+const Adicionar = () => {
   const history = useHistory();
   return (
     <Fragment>
@@ -33,12 +33,13 @@ const Adicionar = (props) => {
               return errors;
             }}
             onSubmit={async (values) => {
-              console.log(values);
+              //console.log(values);
               try {
                 delete axios.defaults.headers.common["Sec-Fetch-Mode"];
-                const response = await axios.post("api/produto", values, {
+                await axios.post("api/produto", values, {
                   headers: { "Content-Type": "application/json" },
                 });
+                history.push("/");
 
                 // history.push("/");
               } catch (error) {
@@ -47,9 +48,9 @@ const Adicionar = (props) => {
             }}
           >
             {({ errors, touched, isValidating, values, handleSubmit }) => {
-              console.log("values", values);
-              console.log("errors", errors);
-              console.log("erros verify", Object.keys(errors).length === 0);
+              //console.log("values", values);
+              //console.log("errors", errors);
+              //console.log("erros verify", Object.keys(errors).length === 0);
               return (
                 <Form
                   className="mt-8 space-y-6"

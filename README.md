@@ -1,32 +1,46 @@
-# GS Labs -Vaga Java
+# Gerenciador de produtos
 
-### What is this repository for?
+Exemplo de gerenciador de produtos simples com autenticação em node.js
 
-- repositorio contem o codigo para a vaga de desenvolverdor na GSlabs
+### guia de inicio
 
-### guia de start
+- Para rodar o porgrama deve-se ter instalado na maquina o [docker e docker compose](https://docs.docker.com/get-docker/)
 
-Para iniciar o programa basta rodar:
+- Para iniciar o programa basta rodar:
 
 ```bash
 docker-compose up
 ```
 
-Para parar:
+- Para parar:
 
 ```bash
 docker-compose down
 ```
 
-Apos o docker compose finalizar
+Apos o docker compose finalizar:
 
-Acesasr o link: https://localhost:3000
+- Acessar o link: http://localhost:3000
 
 ### Banco de dados
 
 Usando seu gerenciador de banco de dados favorito rodar as query a seguir:
 
-Criar a table de usuarios:
+exemplos de gerenciadores de DB caso você queira conhecer alguns:
+s
+
+- [DBeaver Community](https://dbeaver.io/);
+
+- [Beekeeper Studio](https://www.beekeeperstudio.io/);
+
+Credenciais:
+
+- user: "postgres"
+- database: "postgres"
+- password: "postgres"
+- host: "localhost"
+
+Criar a table de usuários:
 
 ```bash
 create table db_usuario (
@@ -50,9 +64,16 @@ create table db_produto (
 
 ### Funcionamento
 
-O software permite que o usuario faça login, adicione produto, remova, lista e alterar
+O software permite que o usuario faça:
 
-todas as api de backend so pode ser acessadas com um token valido que é gerado no login de usuarios cadastrados
+- login;
+- Criar conta
+- Listar Produtos na base da dados;
+- Adicionar produtos;
+- Alterar dados dos produtos;
+- Remover produtos;
+
+OBS: as apis são autenticadas por tokens jwt.
 
 ## License
 

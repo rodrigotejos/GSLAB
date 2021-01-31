@@ -1,11 +1,10 @@
 import "./App.scss";
 //react imports
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect,
 } from "react-router-dom";
 import Cookie from "js-cookie";

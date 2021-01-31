@@ -4,14 +4,14 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-const Edit = (props) => {
+const Edit = () => {
   const location = useLocation();
   const [valuesEdit, setValuesEdit] = useState();
   const history = useHistory();
 
   useEffect(() => {
     const valuesEdit = location.values;
-    console.log("values::::", valuesEdit);
+    //console.log("values::::", valuesEdit);
     setValuesEdit(valuesEdit);
   }, [location]);
 
@@ -44,10 +44,10 @@ const Edit = (props) => {
                 return errors;
               }}
               onSubmit={async (values) => {
-                console.log(values);
+                //console.log(values);
                 try {
                   delete axios.defaults.headers.common["Sec-Fetch-Mode"];
-                  const response = await axios.put("api/produto", values, {
+                  await axios.put("api/produto", values, {
                     headers: { "Content-Type": "application/json" },
                   });
                   history.push("/");
@@ -59,9 +59,9 @@ const Edit = (props) => {
               }}
             >
               {({ errors, touched, isValidating, values, handleSubmit }) => {
-                console.log("values", values);
-                console.log("errors", errors);
-                console.log("erros verify", Object.keys(errors).length === 0);
+                //console.log("values", values);
+                //console.log("errors", errors);
+                //console.log("erros verify", Object.keys(errors).length === 0);
                 return (
                   <Form
                     className="mt-8 space-y-6"
