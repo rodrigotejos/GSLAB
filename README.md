@@ -1,10 +1,12 @@
-# GS Labs -Vaga Java
+# Gerenciador de produtos
 
-### What is this repository for?
+exemplo de gerenciador de produtos simples com autenticação em node.js
 
-- repositorio contem o codigo para a vaga de desenvolverdor na GSlabs
 
-### guia de start
+
+### guia de inicio
+
+- Para rodar deve ter instalado o docker e docker compose
 
 Para iniciar o programa basta rodar:
 
