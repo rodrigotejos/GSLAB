@@ -2,9 +2,11 @@
 
 Exemplo de gerenciador de produtos simples com autenticação em node.js
 
-### guia de inicio
+### **Guia de início**
 
-- Para rodar o porgrama deve-se ter instalado na maquina o [docker e docker compose](https://docs.docker.com/get-docker/)
+---
+
+- Para rodar o porgrama deve-se ter instalado na máquina o [docker e docker compose](https://docs.docker.com/get-docker/)
 
 - Para iniciar o programa basta rodar:
 
@@ -18,39 +20,31 @@ docker-compose up
 docker-compose down
 ```
 
-Apos o docker compose finalizar:
+Após o docker compose finalizar:
 
 - Acessar o link: http://localhost:3000
 
-### Banco de dados
+### **Banco de dados**
+
+---
 
 Usando seu gerenciador de banco de dados favorito rodar as query a seguir:
-exemplo:
-[DBeaver Community](https://dbeaver.io/)
-[Beekeeper Studio](https://www.beekeeperstudio.io/)
 
-Credencias:
+Credencias de acesso ao db Postgres:
 
-- user: "postgres"
-- database: "postgres"
-- password: "postgres"
-- host: "172.25.0.101"
+- user: `postgres`
+- database: `postgres`
+- password: `postgres`
+- host: `localhost`
+- port: `5432`
 
-exemplos de gerenciadores de DB caso você queira conhecer alguns:
-s
+Alguns exemplos de gerenciadores:
 
 - [DBeaver Community](https://dbeaver.io/);
 
 - [Beekeeper Studio](https://www.beekeeperstudio.io/);
 
-Credenciais:
-
-- user: "postgres"
-- database: "postgres"
-- password: "postgres"
-- host: "localhost"
-
-Criar a table de usuários:
+**Criar a tabela de usuários:**
 
 ```bash
 create table db_usuario (
@@ -61,7 +55,7 @@ create table db_usuario (
 );
 ```
 
-Criar a tabela de produto:
+**Criar a tabela de produtos:**
 
 ```bash
 create table db_produto (
@@ -72,18 +66,20 @@ create table db_produto (
 );
 ```
 
-### Funcionamento
+### **Funcionamento**
+
+---
 
 O software permite que o usuario faça:
 
-- login;
-- Criar conta
-- Listar Produtos na base da dados;
+- Login;
+- Criar usuários;
+- Listar produtos cadastrados na base da dados;
 - Adicionar produtos;
 - Alterar dados dos produtos;
 - Remover produtos;
 
-OBS: as apis são autenticadas por tokens jwt.
+OBS: as APIs são autenticadas por tokens jwt.
 
 ## License
 
