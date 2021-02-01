@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
 import Cookie from "js-cookie";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 
 const Login = () => {
   const [isShowingAlert, setIsShowingAlert] = useState(false);
@@ -114,10 +114,13 @@ const Login = () => {
                 //console.log("login tela", response);
                 Cookie.set("token", response.data.token);
                 Cookie.set("nome", response.data.name);
-                setTimeout(() => {
+                window.location.replace("/");
+                //<Redirect to="/" />;
+                /*setTimeout(() => {
                   //console.log("Hello, World!");
+
                   history.push("/");
-                }, 3000);
+                }, 3000);*/
               } catch (error) {
                 setIsShowingAlert(true);
               }
